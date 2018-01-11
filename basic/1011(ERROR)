@@ -3,29 +3,21 @@ int main()
 {
 
 	int n;
-	int a,b,c;
+	long long int a,b,c;
 	int k[100];
 	scanf("%d",&n);
-	for(int i=0;i<n;i++)
+	for(int i=1;i<=n;i++)
 	{
-		scanf("%d %d %d",&a,&b,&c);
+		scanf("%lld %lld %lld",&a,&b,&c);
 		if((a+b)>c)
 		{
-			k[i]=1;
+		printf("Case #%d: true\n",i);
 		}else{
-			k[i]=0;
+		printf("Case #%d: false\n",i);
 		}
 	
 	}
-	for(int j=0;j<n;j++)
-	{
-		if(k[j]==1)
-		{
-		printf("Case #%d: true\n",(j+1));
-		}else{
-		printf("Case #%d: false\n",(j+1));
-		}
-	}
+
 
 
     return 0;
