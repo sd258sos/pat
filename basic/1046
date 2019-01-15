@@ -1,0 +1,37 @@
+#include <stdio.h>
+int main() {
+	int count1=0,count2=0;
+	int flag1=0,flag2=0;
+	int i=0;//计数
+	int a=0,b=0,c=0,d=0;
+		scanf("%d",&i);
+	for(int j=0;j<i;j++)
+	{
+		scanf("%d",&a);
+		scanf("%d",&b);
+		scanf("%d",&c);
+		scanf("%d",&d);
+
+
+		if((a+c)==b){
+		
+			flag1=1;
+		}
+		if((a+c)==d){
+		
+			flag2=1;
+		}
+		
+
+		if(flag1>flag2)
+			count2++;
+		if(flag1<flag2)
+			count1++;	
+	
+		flag1=0;
+		flag2=0;
+		a=0,b=0,c=0,d=0;
+	}
+	printf("%d %d",count1,count2);
+	return 0;
+}
