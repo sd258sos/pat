@@ -1,0 +1,29 @@
+#include <cstdio>
+#include <cmath>
+int main()
+{
+	int a[100000];
+	int count=0;
+	int n1,n2;		//输入的数字 
+	int d;		//进制数
+	scanf("%d %d %d",&n1,&n2,&d) ;
+	n1+=n2;
+		if( 0==n1 ){
+		printf("0");
+		return 0;
+}
+	for(int i=0;n1>0;i++)
+	{
+		a[i]=n1%d;
+		n1=n1/d;
+		count++;
+	}
+
+	for(int j=count-1;j>=0;j--)
+	{
+		printf("%d",a[j]);
+		
+	}
+	
+	return 0;
+}
