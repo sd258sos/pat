@@ -1,0 +1,36 @@
+#include<stdio.h>
+
+int main()
+{
+	int g1,s1,k1,g2,s2,k2;
+	int flag=1;
+	
+	scanf("%d.%d.%d", &g2, &s2,&k2);
+	scanf("%d.%d.%d", &g1, &s1,&k1);
+	k1=29*17*g1+29*s1+k1;
+	k2=29*17*g2+29*s2+k2;
+	
+	k1=k1-k2;
+	if(k1>=0)
+	{
+		flag=1;
+		
+	}else{
+		flag=0;
+	}
+		g2=k1/17/29;
+		k1=k1%(17*29);
+		s2=k1/29;
+		k1=k1%29;
+		
+	if(flag==1){
+		printf("%d.%d.%d",g2,s2,k1);
+		
+	}else if(flag==0){
+		g2=-g2;
+		s2=-s2;
+		k1=-k1;
+		printf("-%d.%d.%d",g2,s2,k1);
+	}
+	return 0;
+}
