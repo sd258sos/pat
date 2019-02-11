@@ -1,0 +1,52 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+/*
+1.求最大公约数函数 
+long long gcd(){}
+2.对m/n的分数进行简化
+fun（）{}
+
+3.main
+输入，打印 
+
+*/ 
+long long a,b,c,d;
+long long gcd(long long n1,long long n2){
+	return n2==0?n1:gcd(n2,n1%n2);
+} 
+void fun(long long a,long long b ){
+	//判断有0的化简情况
+	if(a*b==0){
+	printf("%s", b == 0 ? "Inf" : "0");
+	return ;	
+	}
+	//判断正负号
+	bool flag = ((a < 0 && b > 0) || (a > 0 && b < 0));
+
+	a = abs(a) ;b=abs(b);
+	//如果是可以取整
+	long long x=a/b;
+	printf("%s", flag ? "(-" : "");
+	if(x!=0)printf("%lld",x);
+	if (a % b == 0) {
+ 	if(flag) printf(")");
+ 	return ;
+ }
+	if (x != 0) printf(" ");
+ 	a = a - x * b;
+ 	long long t = gcd(a, b);
+	a = a / t; b = b / t;
+	printf("%lld/%lld%s", a, b, flag ? ")" : "");
+	
+}
+
+int main(){
+	scanf("%lld/%lld %lld/%lld",&a,&b,&c,&d);
+	fun(a, b); printf(" + "); fun(c, d); printf(" = "); fun(a * d + b * c, b*d); printf("\n");
+	fun(a, b); printf(" - "); fun(c, d); printf(" = "); fun(a * d - b * c, b*d); printf("\n");
+	fun(a, b); printf(" * "); fun(c, d); printf(" = "); fun(a * c , b * d); printf("\n");
+	fun(a, b); printf(" / "); fun(c, d); printf(" = "); fun(a * d , b * c); printf("\n");
+return 0;
+}
