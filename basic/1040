@@ -1,0 +1,22 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main(){
+	string s;
+	int countt=0,countp=0,total=0;
+	cin>>s;
+	for(int i=0;i<s.length();i++){
+		if(s[i]=='T')
+		countt++;
+	}
+
+	for(int j=0;j<s.length();j++){
+		if(s[j]=='P') countp++;
+		if(s[j]=='T') countt--;
+		if(s[j]=='A') total= (total + (countp * countt) % 1000000007) %
+1000000007;
+	}
+	printf("%d",total);
+	
+	return 0;
+}
