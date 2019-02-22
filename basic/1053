@@ -1,0 +1,36 @@
+#include<iostream>
+using namespace std;
+/*
+
+    在观察期内，若存在超过一半的日子用电量低于某给定的阈值 e，则该住房为“可能空置”；
+
+    若观察期超过某给定阈值 D 天，且满足上一个条件，则该住房为“空置”。
+
+输入：正整数 N（≤1000）房子个数，正实数 e，即低电量阈值，正整数 D，即观察期阈值 
+k代表房子观察的天数 
+*/
+int main(){
+
+	int N,D,k,count,must_none=0,maybe_none=0;
+	double temp,e;
+	
+	cin>>N>>e>>D;
+	for(int i=0;i<N;i++){
+		cin>>k;
+		count=0;
+	 	for(int j=0;j<k;j++){
+		 	cin>>temp;
+		 	if(temp<e){
+		 		count++;
+			 }
+		 }
+		 if(count > (k / 2)) {
+ 			k > D ? must_none++ : maybe_none++;
+ 		}
+	}
+	double maybe_re = (double)maybe_none / N * 100;
+	double must_re = (double)must_none / N * 100;
+	printf("%.1f%% %.1f%%", maybe_re, must_re);
+
+	return 0;
+}
