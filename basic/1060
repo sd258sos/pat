@@ -1,0 +1,23 @@
+#include<iostream>
+#include <algorithm>
+using namespace std;
+/*
+输入天数n
+输出爱丁顿数 大于n且大于n天的数字
+首先排序 
+*/
+int a[100000]; 
+bool cmp(int a,int b ){
+	return a > b;
+}
+int main(){
+	int n,temp;
+	scanf("%d",&n);
+	for(int i=0;i<n;i++)
+		scanf("%d",&a[i]);
+	sort(a,a+n+1,cmp);
+	int j=0;
+	for(j=0;j<n&&a[j]>j+1;j++);
+	printf("%d",j);
+	return 0;
+} 
