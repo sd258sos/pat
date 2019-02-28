@@ -1,0 +1,44 @@
+#include <iostream>
+#include <string>
+using namespace std;
+/*
+1.输入样例个数
+2. 输入身份证
+3.判断 前17位身份证与权值的和的（b）与最后一位（第18位校验位是否相等）是否相等
+	如果相等，验证下一个，如果 全部相等 最后 打印 All passed	（此处应该有一个FLAG) 
+	如果不相等，输出 
+	注：如果前17位不是0~9直接return false
+		第十八位校验位 如果为X 则直接转换为 10  
+*/
+int a[17]={7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2};
+int b[11] = {1, 0, 10, 9, 8, 7, 6, 5, 4, 3, 2};
+string s;
+bool isTrue(){
+	int sum=0;
+	for(int i=0;i<17;i++)
+	{
+		if(s[i]<'0'||s[i]>'9')
+			return false;
+		sum += (s[i] - '0') * a[i];
+	 }
+	 int temp=(s[17]=='X')?10:(s[17]-'0');
+	 return b[sum%11] == temp;
+}
+int main()
+{
+	int n , flag=0;
+	scanf("%d",&n);
+	for(int i=0;i<n;i++)
+	{
+		cin>>s;
+		if (!isTrue()){
+			cout<<s<<endl;
+			flag=1;
+			
+		}
+	} 
+	if (flag == 0) cout << "All passed";
+
+	return 0 ;
+ } 
+
