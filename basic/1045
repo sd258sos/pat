@@ -1,0 +1,54 @@
+#include <cstdio>
+int main(){
+	
+	/*
+	输入的每一个数字
+	1.如果比top_left大 	 更新top_left 取这个数字
+	2.如果比top_left小	 不要这个数字	top_left取这个数字的前一个 (当前一个不存在，既当前为第一个数字，top_left=0；count--； )
+	
+	*/
+	int n ; 
+	int top_left=-1;
+	int count=0; 
+	int a[5000];
+	scanf("%d",&n);
+	for(int i = 0 ; i < n ;i++)
+	{
+		scanf("%d",&a[count]);
+		if(top_left<a[count]){
+			top_left=a[count];
+			count++;
+		}else if(top_left==a[count])
+		{
+			
+		}
+		else{
+			if(count==1){
+				top_left=0;
+				count--;
+				
+			}else{
+				count--;
+				top_left = a[count-1];
+			}
+			
+		}
+	}
+	printf("%d\n",count);
+		
+	for(int j = 0 ; j < count; j++)
+	{
+		if(j==0)
+		{
+			printf("%d",a[j]);
+			
+		}else{
+			printf(" %d",a[j]);
+		}
+
+		//printf(" %d",a[j]);
+		
+	}
+	
+	return 0;
+} 
