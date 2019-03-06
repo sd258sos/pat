@@ -1,0 +1,43 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+/*
+输入:月饼种类数量  市场需求量
+N种月饼的总库存量
+N种月饼的总价格 
+
+*/
+struct moon_cake{
+	float t_a,t_p,per_p;
+};
+int cmp(moon_cake a,moon_cake b){
+	return a.per_p>b.per_p;
+}
+int main(){
+	int amount,m_need;
+	scanf("%d %d",&amount,&m_need);
+	vector<moon_cake> m(1001);
+	for(int i=0;i<amount;i++){
+		scanf("%f",&m[i].t_a);
+	}
+	
+	for(int i=0;i<amount;i++){
+		scanf("%f",&m[i].t_p);
+	}
+	for(int i=0;i<amount;i++){
+		m[i].per_p=m[i].t_p/m[i].t_a;
+	}
+	sort(m.begin(),m.end(),cmp);
+	float result=0.00;
+	int k=0;
+	while(m[k].t_a<m_need){
+		result+=m[k].t_p;
+		m_need-=m[k].t_a;
+		k++;
+	}
+	result+=m_need*m[k].per_p;
+	printf("%.2f",result);
+	return 0;
+} 
