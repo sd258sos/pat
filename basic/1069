@@ -1,0 +1,42 @@
+#include<iostream>
+#include<map>
+using namespace std;
+
+/*
+M（≤ 1000）、N 和 S，分别是转发的总量、小明决定的中奖间隔、以及第一位中奖者的序号（编号从 1 开始）
+
+*/
+/*
+
+
+如果出现过且s==i,忽略
+s++;
+
+如果没有出现过 且s==i
+打印，同时  标记map为1
+
+*/
+int main(){
+	int m,n,s;
+	string str,temp;
+	cin>>m>>n>>s;
+	bool flag = false;
+	map<string,int> mmp;
+	
+	for(int i=1;i<=m;i++){
+		cin>>temp;
+		if(mmp[temp]==1){
+			s++;
+		}
+		if((s==i)&&mmp[temp]==0){
+			cout<<temp<<endl;
+			mmp[temp]=1;
+			flag=true;
+			s=s+n;
+		}
+	}
+	if(flag==false){
+		cout<<"Keep going...";
+	}
+	return 0;
+}
