@@ -1,0 +1,62 @@
+#include<iostream>
+#include<map>
+#include<cmath>
+using namespace std;
+int a[1001][1001];
+//用于元素唯一性 
+map<int,int> vis;
+int m,n,tol;
+/*
+输入m,n的值
+输入二维数组的值
+比较与周围的数组的差值
+需要有八个元素的比较 
+
+*/
+
+//分别表示 8个方位 
+int dir[8][2] = {1,0, -1,0, 0,1, 0,-1, 1,1, 1,-1, -1,1, -1,-1};
+//判断周围函数 
+bool compare(int x,int y){
+	for(int i=0;i<8;i++){
+		int xx=x+dir[i][0];
+		int yy=y+dir[i][1];
+		if(xx>=0 && xx<n && yy<m && yy>=0 && abs(a[xx][yy]-a[x][y])<=tol)
+			return false;
+	}
+	return true;
+	
+}
+int main()
+{
+	int temp1,temp2;//临时存储坐标 
+	int count=0;
+	int x,y;
+	cin>>m>>n>>tol;
+	for(int i=0;i<n;i++){
+		for(int j=0;j<m;j++){
+			cin>>a[i][j];
+			vis[a[i][j]]++;//唯一性 
+		}
+	}
+	for(int i=0; i<n; i++)
+        for(int j=0; j<m; j++)
+            {
+            if (vis[a[i][j]]==1&&compare(i,j)){//先判断该点是否是独一无二，再循环遍历四周是否满足条件
+            	count++;//独一无二颜色的那个像素点的个数
+                x = i;
+                y = j;
+                }
+            }
+        if (count == 1){
+            printf ("(%d, %d): %d\n",y+1,x+1,a[x][y]);
+        }else if (count > 1){
+            printf("Not Unique\n");
+        }else {
+            printf("Not Exist\n");
+        }
+
+
+	
+	return 0;
+}
