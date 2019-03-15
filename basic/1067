@@ -1,0 +1,32 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int main(){
+	string password,temp;
+	int n;
+	int tempc=0;
+	//scanf("%s %d",&s,&n);
+	cin >> password >> n;
+	getchar();
+	while(1){
+		getline(cin,temp);
+		if (temp == "#") break;
+
+		if(n>0){
+			if(temp==password){
+				printf("Welcome in");
+				break;
+			}else{
+				n--;
+				cout << "Wrong password: " << temp << endl;
+
+				if(n==0){
+				printf("Account locked");
+				break;
+			}
+		
+		}
+		}
+	}
+	return 0;
+}
