@@ -1,0 +1,58 @@
+/*
+输出物品编号  %04d  当有的货物没有标明
+*/
+
+#include<iostream>
+#include<string>
+using namespace std;
+/*
+输入第一行给出两个正整数 N（≤ 1000）和 M（≤ 6），分别是学生人数和需要被查缴的物品种类数。
+
+
+tempc 代表有几件物品
+进入for
+	for违禁品
+	如果有  加入   temp数组tempt[tempn] 
+	for结束 
+	如果tempn>0  打印 str  同时遍历tempt数组  同时  totals++; totalt+=tempn;
+最后
+	打印 totals和 totalt
+*/
+int main(){
+	int a[10],tempt[10];
+	int N,M;
+	int totalt=0,totals=0;
+	string str;
+	int tempc,temp,tempn;
+	cin>>N>>M;
+	for(int i=0;i<M;i++){
+		cin>>a[i];
+	}
+	//对每个学生搜查
+	for(int i=0;i<N;i++){
+		tempn=0;
+		cin>>str;
+		cin>>tempc;	
+		for(int j=0;j<tempc;j++){
+			cin>>temp;
+			for(int l=0;l<M;l++){
+				if(a[l]==temp){
+					tempt[tempn]=temp;
+					tempn++;
+				}	
+			}
+		}
+		if(tempn>0){
+			cout<<str+":";
+			for(int i=0;i<tempn;i++){
+				printf(" %04d",tempt[i]);
+			}
+			cout<<endl;
+			totals++; totalt+=tempn;
+		} 
+	}
+	printf("%d %d",totals,totalt);
+	
+	
+	return 0;
+}
