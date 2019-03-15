@@ -1,0 +1,42 @@
+#include<iostream>
+using namespace std;
+/*
+输入在第一行给出 2 个正整数 T 和 K（≤ 100），分别是系统在初始状态下赠送给玩家的筹码数、以及需要处理的游戏次数。
+n1 b t n2
+
+其中 n1 和 n2 是计算机先后给出的两个[0, 9]内的整数，保证两个数字不相等。b 为 0 表示玩家赌小，为 1 表示玩家赌大。t 表示玩家下注的筹码数，保证在整型范围内。
+*/
+/*
+判断如果赌资不够，打印   Not enough tokens.  Total = x.
+如果赌资够， 赢：T+=t
+			输 :T-=t 
+			if(T==0)
+			没钱了，退出 
+*/
+int main(){
+	int T,K;
+	cin>>T>>K;	//筹码次数
+	int n1,n2,b,t;
+	
+	for(int i=0;i<K;i++){
+		cin>>n1>>b>>t>>n2;
+		if(T<t){
+			printf("Not enough tokens.  Total = %d.\n",T);
+		}else{
+			if((b==0&&n2<n1)||(b==1&&n2>n1)){
+				T+=t;
+				printf("Win %d!  Total = %d.\n",t,T);
+			}else if((b==0&&n2>n1)||(b==1&&n2<n1)){
+				T-=t;
+				printf("Lose %d.  Total = %d.\n",t,T);
+			}
+		}
+		if(T==0){
+			cout<<"Game Over.";
+			break;
+		}
+	} 
+	
+	
+	return 0;
+}
